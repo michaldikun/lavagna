@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    depends_on:
+      mysql:
+          condition: service_healthy
+    networks:
+      - frontend
+      - backend
+    hostname: app
+
+  mysql:
+   container_name: mysql
+   #platform: "linux/amd64"
+   image: mysql:5.7
+   environment: 
+     MYSQL_ROOT_PASSWORD: 12345
+   volumes:
+    - database:/var/lib/mysql      
+    - ./sql:/docker-entrypoint-initdb.d
+   healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost', '-uroot', '-p12345']
+      timeout: 20s
+      retries: 10 
+   networks:
+    - backend
+   hostname: mysql
+
+  nginx:
+    image: nginx:1.23-alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro 
+      -  ./src/main/webapp:/static
+    networks:
+      - frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+
+  # docs:
+  #   build: 
+  #     context: .
+  #     dockerfile: docs.Dockerfile
+  #   networks:
+  #    - frontend
+  #    - backend
+
+networks:
+  backend:
+  frontend:
+
+
+volumes:
+  database:
+
+
+
