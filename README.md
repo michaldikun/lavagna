@@ -1,3 +1,61 @@
+# Project Name Readme
+
+Welcome to the Lavagna! This project is built using Docker Compose, utilizing a custom Dockerfile. It incorporates MySQL as the database and Nginx as the web server. To get started quickly, follow the instructions below.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed on your system:
+
+- Docker
+- Docker Compose
+
+## Getting Started
+
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone [repository-url]
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd [project-directory]
+   ```
+
+3. Run the initialization script:
+
+   ```bash
+   ./init.sh
+   ```
+
+   This script will handle the Docker Compose build and run processes, setting up the necessary containers and configurations.
+
+4. Access the application:
+
+   Once the initialization process is complete, you can access the application through your web browser at [http://localhost](http://localhost). The MySQL database is also accessible through the default port.
+
+## Custom Dockerfile
+
+The project uses a custom Dockerfile to define the environment and dependencies required to run the application. 
+
+## Docker Compose
+
+Docker Compose is utilized to orchestrate the containers and simplify the deployment process. The configuration file, `docker-compose.yml`, is located in the project directory.
+
+## Directory Structure
+
+- `app`: Contains the application source code.
+- `sql`: Contains MySQL database configurations and initialization scripts.
+- `nginx`: Contains Nginx server configurations.
+
+## Important Notes
+
+- Make sure the necessary ports (e.g., 80 for Nginx) are not in use on your machine.
+- Customize the MySQL configurations in the `docker-compose.yml` file as needed.
+
+
+
 ## Project Architecture
 
 The architecture of this project follows a three-tier model, designed to efficiently handle user interactions, process business logic, and manage data. The components of the architecture are as follows:
