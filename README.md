@@ -1,4 +1,4 @@
-# Project Name Readme
+# Lavagna
 
 Welcome to the Lavagna! This project is built using Docker Compose, utilizing a custom Dockerfile. It incorporates MySQL as the database and Nginx as the web server. To get started quickly, follow the instructions below.
 
